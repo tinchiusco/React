@@ -13,9 +13,17 @@ const NavBar = () => {
     }
 
     return (
+
+        
+           
         <ul
             className={themeColor === "light" ? "ul-container" : "ul-container-dark"}
         >
+            <li
+                className="brand"
+            >
+                <Link to="/">GameLoft</Link>
+            </li>
             <li
                 className="li-list"
             >
@@ -53,6 +61,8 @@ const NavBar = () => {
                 <CartWidget />
             </div>
         </ul>
+       
+      
     );
 };
 
