@@ -1,50 +1,67 @@
 import React from "react";
-import { useFormik } from "formik";
-import "./styles.css";
 
-export const Form = () => {
-  const formik = useFormik({
-    initialValues: { name: "", phone: "", email: "" },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  });
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+
+
+
+ const SignupForm = () => {
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
-        id="Name"
-        name="Name"
-        type="Email"
-        onChange={formik.handleChange}
-        value={formik.values.name}
-        
-      />
-      <label htmlFor="phone">Phone</label>
-      <input
-        id="Phone"
-        name="Phone"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.phone}
-        
-      />
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        
-      />
-      
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <h1>Tus datos de compra</h1>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+        }}
+        validationSchema={Yup.object({
+          firstName: Yup.string()
+            .max(15, "Must be 15 characters or less")
+            .required("Required"),
+          lastName: Yup.string()
+            .max(20, "Must be 20 characters or less")
+            .required("Required"),
+          email: Yup.string()
+            .email("Invalid email addresss`")
+            .required("Required"),
+          
+           
+            
+           
+        })}
+        onSubmit={async (values, { setSubmitting }) => {
+          await new Promise(r => setTimeout(r, 500));
+          setSubmitting(false);
+        }}
+      >
+        <Form>
+          <input
+            label="First Name"
+            name="firstName"
+            type="text"
+            placeholder="Jane"
+          />
+          <input
+            label="Last Name"
+            name="lastName"
+            type="text"
+            placeholder="Doe"
+          />
+          <input
+            label="Email Address"
+            name="email"
+            type="email"
+            placeholder="jane@formik.com"
+          />
+          
+
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 
-
-
-
-
+export default SignupForm

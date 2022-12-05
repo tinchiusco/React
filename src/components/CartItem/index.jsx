@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Shop } from '../../contexts/Shop'
 import TrashCanIcon from '../TrashCanIcon'
+import './styles.scss'
 
 const CartItem = ({item}) => {
 
@@ -11,18 +12,11 @@ const CartItem = ({item}) => {
   }
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'left',
-      padding: 30,
-      gap: 40,
-      alignItems: 'center'
-    }}>
-        <img src ={item.image} width={150} alt='cart-item'/>
+    <div className='item'>
+        <img src ={item.image} width={400} alt='cart-item'/>
         <h1>{item.name}</h1>
-        <p>{item.quantity}</p>
-        <div style={{width: 30}} onClick={handleRemove}>
+        <h2 className='item-quantity'>Number of items: {item.quantity}</h2>
+        <div style={{width: 20}} onClick={handleRemove}>
           <TrashCanIcon />
         </div>
     </div>

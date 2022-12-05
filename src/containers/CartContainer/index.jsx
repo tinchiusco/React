@@ -24,8 +24,9 @@ const CartContainer = () => {
             {products.map((product) => {
                 return <CartItem key={product.id} item={product} />;
             })}
+            <h2>Total: ARS ${calculateTotal()}</h2>
             <button className="btn btn-success p-3" onClick={confirmPurchase}>
-                Confirmar compra
+                Confirm buy
             </button>
         </div>
     );
