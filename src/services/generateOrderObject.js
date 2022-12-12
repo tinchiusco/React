@@ -1,10 +1,13 @@
 //Función auxiliar para generar la orden.
-const generateOrderObject = (nombre, email, telefono, cart, total) => {
+
+
+
+const generateOrderObject = (name, lastName, email, cart, total) => {
     return {
         buyer: {
-            nombre: nombre,
+            name: name,
+            lastName: lastName,
             email: email,
-            telefono: telefono,
         },
         items: cart
         ,
