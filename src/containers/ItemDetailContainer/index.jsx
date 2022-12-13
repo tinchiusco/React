@@ -6,32 +6,28 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 const ItemDetailContainer = () => {
+  const { id } = useParams();
 
-    const {id} = useParams()
+  const [character, setCharacter] = useState(null);
 
-    const [character, setCharacter] = useState(null)
+  useEffect(() => {
+    const getCharacterDetail = async () => {
+      const docRef = doc(db, "games", id);
 
-    useEffect(() => {
+      const docSnap = await getDoc(docRef);
 
-        const getCharacterDetail = async () => {
-            const docRef = doc(db, "games", id);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setCharacter({ ...docSnap.data(), id: docSnap.id });
+      } else {
+        console.log("No such document!");
+      }
+    };
 
-            
-            const docSnap = await getDoc(docRef);
+    getCharacterDetail();
+  }, [id]);
 
-            if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
-                setCharacter({...docSnap.data(), id: docSnap.id})
-            } else {
-              
-                console.log("No such document!");
-            }
-        }
-
-        getCharacterDetail()
-    }, [id])
-
-    return (character ? <ItemDetail character={character}/> : <Loader/> )
+  return character ? <ItemDetail character={character} /> : <Loader />;
 };
 
 export default ItemDetailContainer;

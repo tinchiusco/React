@@ -28,7 +28,7 @@ const ItemDetail = ({ character }) => {
             <img src={character.image} width={700} alt="detail" />
             <div className="texts">
               <h1>{character.name}</h1>
-              <p>{character.description}</p>
+              <p className="texts">{character.description}</p>
               {quantityItemDetail ? 
                 <button onClick={handleNavigate}>Go cart</button>
               : 
