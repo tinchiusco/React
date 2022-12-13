@@ -8,7 +8,6 @@ export const saveOrder = async (firstName, lastName, email, products, total) => 
             firstName,
             lastName,
             email,
-            
             products,
             total
         );

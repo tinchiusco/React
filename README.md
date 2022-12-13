@@ -1,6 +1,6 @@
 # Final React Coderhouse
 
-Proyecto realziado con React 18.2
+Proyecto realizado con React 18.2
 
 ## E-commerce de practica que incluye:
 
