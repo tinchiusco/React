@@ -16,14 +16,14 @@ const ItemDetailContainer = () => {
         const getCharacterDetail = async () => {
             const docRef = doc(db, "games", id);
 
-            //2do generar la petición
+            
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
                 console.log("Document data:", docSnap.data());
                 setCharacter({...docSnap.data(), id: docSnap.id})
             } else {
-                // doc.data() will be undefined in this case
+              
                 console.log("No such document!");
             }
         }

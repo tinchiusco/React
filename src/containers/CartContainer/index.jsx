@@ -30,7 +30,7 @@ const CartContainer = () => {
   });
 
   const confirmPurchase = () => {
-    //Mostrar un formulario de compra, donde el usuario ingrese sus datos
+   
 
     (async () => {
       await saveOrder(
@@ -42,7 +42,7 @@ const CartContainer = () => {
       );
     })();
   };
-  // De no haber items debería mostrarse de manera condicional un mensaje "No hay items en el cart"
+  
   return (
     <div>
       {products.map((product) => {
@@ -92,8 +92,7 @@ const CartContainer = () => {
         <button
           type="submit"
           className="btn btn-success mt-5 p-3"
-          onClick={confirmPurchase}
-        >
+          onClick={confirmPurchase}>
           Buy
         </button>
       </form>

@@ -54,7 +54,7 @@ export const saveOrder = async (firstName, lastName, email, products, total) => 
                 generatedOrder
             );
             alert(
-                `Se generó la order correctamente con ID: ${docRef.id}`
+                `Order generated with ID: ${docRef.id}`
             );
         } else {
             let mensaje = "";
@@ -62,10 +62,10 @@ export const saveOrder = async (firstName, lastName, email, products, total) => 
                 const productInFirebase = productsInFirebase.find(
                     (productFirebase) => productFirebase.id === product.id
                 );
-                console.log(productInFirebase);
-                mensaje += `${product.name}, stock disponible: ${productInFirebase.quantity}, cantidad pedida: ${product.quantity}\n`;
+                
+                mensaje += `${product.name}, stock: ${productInFirebase.quantity}, quantity: ${product.quantity}\n`;
             }
-            alert(`Hay producto/s fuera de stock: \n${mensaje}`);
+            alert(`Out of products stock: \n${mensaje}`);
         }
     } catch (error) {
         console.log(error);
